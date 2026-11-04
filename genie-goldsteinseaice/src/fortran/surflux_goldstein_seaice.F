@@ -247,19 +247,21 @@ c some terms derived to check energy conservation wrt PLASIM
               print*,"sea ice did not converge",tice(i,j),ticold
               tice(i,j)=0.5*(tice(i,j)+ticold)
               print*,i,j
-              print*,"qsatsic",qsatsic
-              print*,"evapsic",evapsic
-              print*,"tieqn",tieqn
+              print*,"qsatsic - adjusted for surface pressure",qsatsic
+              print*,"evapsic - moisture transfer coefficient",evapsic
+              print*,"tieqn - sensible transfer coefficient",tieqn
               print*,"dtieq",dtieq
               print*,"apres",apres(i,j)
               print*,"ashum",ashum(i,j)
               print*,"latent_coeff",latent_coeff(i,j)
               print*,"sich",sich(i,j)
-              print*,"fxwsic",fxswsic
+              print*,"fxswsic",fxswsic
               print*,"longwave",longwave(i,j)
               print*,"emo",emo
               print*,"sensible_coeff",sensible_coeff(i,j)
               print*,"atemp",atemp(i,j)
+              print*,"Problem with ice temperature convergence, stopping, see above for details" ! Added by JL
+              stop 1 ! Added by JL
 
    10         tice(i,j)=min(tice(i,j),0.0)
 

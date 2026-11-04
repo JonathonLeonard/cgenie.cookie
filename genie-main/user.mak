@@ -24,7 +24,7 @@
 
 ## === Compre the values below to those in user.sh ===
 GENIE_ROOT        = $(HOME)/cgenie.cookie
-OUT_DIR           = $(HOME)/cgenie_output
+OUT_DIR           = /Users/jono/cgenie_output
 RUNTIME_ROOT      = ../../cgenie.cookie
 
 # === Fortran compiler (ifc/ifort/f90/pgf90) ===
@@ -54,12 +54,12 @@ BUILD=SHIP
 #BUILD=PROFILE
 #BUILD=BOUNDS
 # === Machine type (LINUX/SLOARIS/SGI) ===
-MACHINE=LINUX
+# MACHINE=LINUX
 #MACHINE=SGI
 #MACHINE=SOLARIS
 #MACHINE=WIN32
 #MACHINE=OSX	# Intel processor
-#MACHINE=OSX_M	# Apple silicon (M1, M2 etc.)
+MACHINE=OSX_M# Apple silicon (M1, M2 etc.)
 
 # === Extension for module files ===
 MODEXT=mod
@@ -83,7 +83,7 @@ else ifeq ($(FNETCDF),eevee)
   NETCDF_DIR=/share/apps/netcdf
 else
   ### DEFAULT ###
-  NETCDF_DIR=/usr/local
+  NETCDF_DIR=$(HOME)/netcdf
   ### Mac (example) ###
   #NETCDF_DIR=/usr/local/Cellar/netcdf/4.9.2_1
 endif

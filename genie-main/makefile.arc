@@ -323,7 +323,8 @@ ifeq ($(F77),gfortran)
   #       => error (-fallow-argument-mismatch turns this is a warning) (cannot then have -pedantic) [error occurs in outm_netcdf.F]
   # first get gfortran major version number
   FVER=$(shell gfortran -dumpversion)
-  ifeq ($(shell test $(FVER) -gt 9; echo $$?),0)
+  FVER_MAJOR=$(word 1,$(subst ., ,$(FVER))) # Apparently to only print the major version so there's no integer mismatch - JL
+  ifeq ($(shell test $(FVER_MAJOR) -gt 9; echo $$?),0)
     FFLAGS += -fallow-argument-mismatch
     FFLAGS += -fallow-invalid-boz
   endif

@@ -2270,7 +2270,7 @@
                        <description> location of boundary condition files </description>
                    </param>
                    <param name="outdir_name">
-                       <value datatype="string"><varref>RUNTIME_OUTDIR</varref><sep/>plasim</value>
+                       <value datatype="string"><varref>RUNTIME_OUTDIR</varref><sep/>results</value>
                        <description> output directory </description>
                    </param>
                    <param name="rstdir_name">

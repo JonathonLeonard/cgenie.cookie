@@ -18,7 +18,7 @@ LOCALFLAGS = $(FFLAGS) $(BOUNDS_FLAGS) $(FLAGR8)
 OTHER_FILES = makefile makefile.arc testing.mak user.mak
 
 EXE_MAIN = genie.exe
-EXECUTABLES = $(EXE_MAIN) nccompare
+EXECUTABLES = $(EXE_MAIN) #nccompare
 
 OBJ_MAIN = genie.$(OBJ_EXT)
 OBJS4 = initialise_genie.$(OBJ_EXT)
@@ -157,8 +157,8 @@ $(EXE_COSTFN) : $(EXE) $(CONTROL_OBJS) $(UTIL_LIBS) $(LOCAL_LIBS) $(MODULE_LIBS)
 	$(NETCDF) $(GLIMMER) $(FORTRANLIBS) $(XLIB) $(BOUNDS_FLAGS)
 
 # Rule to make FORTRAN nccompare
-nccompare :
-	\cd $(F_DIR); $(MAKE)
+# nccompare :
+# 	\cd $(F_DIR); $(MAKE)
 
 # rule to set up data directories of individual modules
 $(MODULE_DATA): FORCE
