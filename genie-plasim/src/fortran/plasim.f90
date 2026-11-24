@@ -1221,10 +1221,10 @@
       if(NTRU==42) then
        nhdiff=16
        ndel(:)=4
-       tdissq(:)=0.1  * solar_day
-       tdisst(:)=0.76 * solar_day
-       tdissz(:)=0.3  * solar_day
-       tdissd(:)=0.06 * solar_day
+       tdissq(:)=0.1
+       tdisst(:)=0.76
+       tdissz(:)=0.3
+       tdissd(:)=0.06
       endif
 
       open(unit=56,file='data_PLASIM')

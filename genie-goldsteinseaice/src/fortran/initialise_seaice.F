@@ -101,9 +101,9 @@ c     AY (04/10/04) : for netCDF restarts (following Dan)
 c     -DJL 21/9/05 (for reading IGCM grid), inserted by RMA
 
       integer nx_igcm
-      parameter(nx_igcm=64)
+      parameter(nx_igcm=maxi)
       integer ny_igcm
-      parameter(ny_igcm=32)
+      parameter(ny_igcm=maxj)
 
       real igcm_lons(nx_igcm)
       real igcm_lats(ny_igcm)
@@ -344,7 +344,7 @@ c     rma note igcm orders latitude north-to-south!
             thv = deg_to_rad*igcm_lats_edge(jmax+1-j)
             dth = deg_to_rad*(igcm_lats_edge(jmax+2-j)
      1           - igcm_lats_edge(jmax+1-j))
-            theta = thv - 0.5*dth
+            theta = thv + 0.5*dth
             sv(j) = sin(thv)
             s(j) = sin(theta)
             cv(j) = cos(thv)

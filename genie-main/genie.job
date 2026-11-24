@@ -158,6 +158,10 @@ addfppopt () {
     fi
 }
 
+build_signature () {
+    printf '%s\n' "$FPPOPTS $MAKE_ARGS"
+}
+
 checkConfig() {
 # if terminate is set to 'yes' then xsltproc completes
 # with a non-zero return value if it encounters an error.
@@ -291,6 +295,11 @@ fi
 #######################################################
 if [ $REMAKE = "TRUE" ]; then
     $MAKE $MAKE_ARGS "GENIE_FPPFLAGS=${FPPOPTS}"
+    build_signature > .genie-build-signature
+elif [ ! -f .genie-build-signature ]; then
+    die "no build signature found; recompile before running with -z"
+elif [ "$(cat .genie-build-signature)" != "$(build_signature)" ]; then
+    die "build configuration differs from the compiled binary; recompile before running with -z"
 fi
 
 # ###################################################################
@@ -312,6 +321,11 @@ fi
 # ###################################################################
 cp $DEFINITIONS_HOME/definition.xml $OUTDIR/archive
 cp $CONFIGFILES $OUTDIR/archive
+mkdir -p "$OUTDIR/archive/geography"
+for world in $(grep -ho '<param name="world">[^<]*' $CONFIGFILES 2>/dev/null | sed 's/.*>//' | sort -u); do
+    find "$CODEDIR" -path '*/data/input/*' -type f -name "${world}*" \
+        -exec cp -p {} "$OUTDIR/archive/geography/" \;
+done
 
 # ###################################################################
 # Create the namelist and goin files.

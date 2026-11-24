@@ -2399,6 +2399,10 @@
                    </param>
                </namelist>
                <namelist name="LANDPAR_PLASIM_NML">
+                   <param name="albland">
+                       <value datatype="real">0.2</value>
+                       <description>land albedo</description>
+                   </param>
                    <param name="albgmax">
                        <value datatype="real">0.8</value>
                        <description> maximum ice sheet albedo</description>

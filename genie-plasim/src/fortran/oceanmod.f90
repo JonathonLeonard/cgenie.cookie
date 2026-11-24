@@ -165,6 +165,7 @@
        enddo
        cphi(:)=cos(asin(zsi(:)))
        dphi(1:NLAT-1)=asin(zsi(2:NLAT))-asin(zsi(1:NLAT-1))
+       dphi(NLAT)=dphi(NLAT-1)
        cphih(0)=0.
        zzsi=1.
        do jlat=1,NLAT/2
@@ -474,7 +475,9 @@
        call ntomin(nstep,imin,ihou,iday,imon,iyea)
        yfsst2a(:,imon)=yfsst2a(:,imon)+yfsst2(:)
 ! output flux correction every nflukoavg timesteps
-       if(mod(nstep,nflukoavg)==0) call outflux_ocean
+       if(nfluko > 0) then
+        if(mod(nstep,nflukoavg)==0) call outflux_ocean
+       endif
 ! end PBH
 
 !
@@ -764,6 +767,8 @@
       use oceanmod
       implicit none
       integer i,nmin,nhour,nday,nmonth,nyear
+      integer ios
+      character(len=256) :: fluxfile
 
       integer :: ih(8)
 
@@ -784,14 +789,20 @@
       yfsst2a(:,0)=yfsst2a(:,12)
       yfsst2a(:,13)=yfsst2a(:,1)
 
-! temporary path and filename (generalise this)
       IF(NLAT.EQ.32) THEN
-        open(10,file=trim(runtime_root)//'/genie-plasim/data/input/T21/N032_surf_0903.sra',form='formatted')
+        fluxfile=trim(runtime_root)//'/genie-plasim/data/input/T21/N032_surf_0903.sra'
+      ELSE IF(NLAT.EQ.48) THEN
+        fluxfile=trim(runtime_root)//'/genie-plasim/data/input/T31/N048_surf_0903.sra'
       ELSE IF(NLAT.EQ.64) THEN
-        open(10,file=trim(runtime_root)//'/genie-plasim/data/input/T42/N064_surf_0903.sra',form='formatted')
+        fluxfile=trim(runtime_root)//'/genie-plasim/data/input/T42/N064_surf_0903.sra'
       ELSE
-        print*,"look at outflux_ocean"
-        stop
+        print*,"unsupported PlaSim latitude resolution for outflux_ocean"
+        return
+      ENDIF
+      open(10,file=trim(fluxfile),form='formatted',status='replace',iostat=ios)
+      if (ios /= 0) then
+        print*,"unable to write ocean flux correction: ",trim(fluxfile)
+        return
       ENDIF
 
       do i=0,13
@@ -1450,7 +1461,8 @@
       use oceanmod
       implicit none
       integer nsub,jlev,jlat,jlon,jit,jlap,jlam,jlom
-      real zdelt,zfac,zztm,zzgw
+      real zdelt,zztm,zzgw,zgeom,zratio
+      real zfaclat(NLAT)
       parameter(nsub=100)
 !
       real(kind=8) :: psst(NHOR,NLEV_OCE)
@@ -1471,7 +1483,15 @@
       call mpgagp(zls,yls,1)
 !
       do jlev=1,NLEV_OCE
-       zfac=hdiffk(jlev)/plarad/plarad
+       do jlat=1,NLAT
+        zfaclat(jlat)=hdiffk(jlev)/plarad/plarad
+        zgeom=1.0/(dlam*dlam*max(cphi(jlat)*cphi(jlat),1.0e-12)) &
+     &       + 2.0/(minval(dphi(:))*minval(dphi(:)))
+        zratio=zfaclat(jlat)*zdelt*zgeom
+        if (zratio > 0.5 .and. zdelt > 0.0 .and. zgeom > 0.0) then
+         zfaclat(jlat)=0.25/(zdelt*zgeom)
+        endif
+       enddo
 !
        call mpgagp(zt,zsst(:,jlev),1)
 !
@@ -1524,7 +1544,7 @@
      &                        /dlam/cphi(jlat)/cphi(jlat)               &
      &                       +(zdty(jlon,jlat)-zdty(jlon,jlam))         &
      &                        /dmue(jlat))                              &
-     &                      *zfac
+     &                      *zfaclat(jlat)
            endif
           enddo
          enddo

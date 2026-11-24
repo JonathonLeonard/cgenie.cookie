@@ -164,7 +164,7 @@
 !
 !     initialize land surface
 !
-      namelist/landpar/nlandt,nlandw,albland,dz0land,drhsland    &
+      namelist/landpar/nlandt,nlandw,dz0land,drhsland             &
      &                ,albsmin,albsmax,albsminf,albsmaxf                &
      &                ,albgmin                                          &
      &                ,dsmax,wsmax,drhsfull,dzglac,dztop,dsoilz         &
@@ -173,7 +173,7 @@
      &                ,ncveg,newsurf,rinifor,nwatcini,dwatcini
 !
       namelist/landpar_plasim_nml/                                &
-               albgmax,nbiome,nmoist
+               albland,albgmax,nbiome,nmoist
       interface
          integer function ncountsea(plsm)
             use pumamod

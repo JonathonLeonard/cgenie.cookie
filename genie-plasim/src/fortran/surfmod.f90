@@ -374,10 +374,11 @@
 
       call mpbci(nsurf)
 
+      call mpsurfgp('doro',doro,NHOR,1)
+      doro(:) = doro(:) * oroscale  ! Scale orography
+
       if (nrestart == 0) then ! need to read start data
-         call mpsurfgp('doro',doro,NHOR,1)
          call mpsurfgp('dls' ,dls ,NHOR,1)
-         doro(:) = doro(:) * oroscale  ! Scale orography
 
 !        Compute spectral orography
 

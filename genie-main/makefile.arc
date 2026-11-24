@@ -344,6 +344,9 @@ ifeq ($(F77),gfortran)
     ifneq ($(MACHINE),OSX_M)
       # NOTE: -msse is an Intel flag
       FFLAGS += -msse
+      # Higher-resolution PlaSim/GOLDSTEIN arrays can exceed 2 GiB.
+      FFLAGS += -mcmodel=medium
+      LDFLAGS += -mcmodel=medium
     endif
   endif
   ifeq ($(BUILD),DEBUG)

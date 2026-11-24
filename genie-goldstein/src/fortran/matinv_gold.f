@@ -19,8 +19,9 @@ c elimination
 c
       do i=1,nvar-1
          do j=i+1,nvar
+            amat(j,i) = amat(j,i)/amat(i,i)
             do k=i+1,nvar
-               amat(j,k) = amat(i,i)*amat(j,k) - amat(j,i)*amat(i,k)
+               amat(j,k) = amat(j,k) - amat(j,i)*amat(i,k)
             enddo
          enddo
       enddo
@@ -36,7 +37,7 @@ c
 
       do i=1,nvar-1
          do j=i+1,nvar
-            rhs(j) = amat(i,i)*rhs(j) - amat(j,i)*rhs(i)
+            rhs(j) = rhs(j) - amat(j,i)*rhs(i)
          enddo
       enddo
 c

@@ -562,7 +562,9 @@
        call ntomin(nstep,imin,ihou,iday,imon,iyea)
        xflxice2a(:,imon)=xflxice2a(:,imon)+xflxice2(:)
 ! output flux correction every nflukoavg timesteps
-       if(mod(nstep,nflukoavg)==0) call outflux_ice
+       if(nfluko > 0) then
+        if(mod(nstep,nflukoavg)==0) call outflux_ice
+       endif
 ! end PBH
 
       else
@@ -1259,6 +1261,8 @@
       implicit none
       integer nmin,nhour,nday,nmonth,nyear
       integer i
+      integer ios
+      character(len=256) :: fluxfile
 
       integer :: ih(8)
 
@@ -1279,14 +1283,20 @@
       xflxice2a(:,0)=xflxice2a(:,12)
       xflxice2a(:,13)=xflxice2a(:,1)
 
-!temporary path and filename (generalise this)
       IF(NLAT.EQ.32) THEN
-        open(10,file=trim(runtime_root)//'/genie-plasim/data/input/T21/N032_surf_0709.sra',form='formatted')
+        fluxfile=trim(runtime_root)//'/genie-plasim/data/input/T21/N032_surf_0709.sra'
+      ELSE IF(NLAT.EQ.48) THEN
+        fluxfile=trim(runtime_root)//'/genie-plasim/data/input/T31/N048_surf_0709.sra'
       ELSE IF(NLAT.EQ.64) THEN
-        open(10,file=trim(runtime_root)//'/genie-plasim/data/input/T42/N064_surf_0709.sra',form='formatted')
+        fluxfile=trim(runtime_root)//'/genie-plasim/data/input/T42/N064_surf_0709.sra'
       ELSE
-        print*,"look at outflux_ice"
-        STOP
+        print*,"unsupported PlaSim latitude resolution for outflux_ice"
+        return
+      ENDIF
+      open(10,file=trim(fluxfile),form='formatted',status='replace',iostat=ios)
+      if (ios /= 0) then
+        print*,"unable to write ice flux correction: ",trim(fluxfile)
+        return
       ENDIF
 
 

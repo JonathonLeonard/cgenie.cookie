@@ -10,6 +10,7 @@
 
       real fe(2), fw(2), fn(2), fs(2,maxi)
      +    ,fwsave(2)
+      real diffsic_eff, diff_limit
 
 c 2nd order explicit transport code using upper level ocean velocities
 
@@ -23,6 +24,16 @@ c southern boundary fluxes
  230  continue
 
       do 100 j=1,jmax
+
+c     Limit explicit diffusion to a stable fraction of the timestep.
+         diff_limit = rc2(j)*rdphi
+         if (j.lt.jmax) diff_limit = diff_limit
+     1        + cv2(j)*rdsv(j)*rds(j)
+         if (diff_limit.gt.0.0 .and. dtsic.gt.0.0) then
+            diffsic_eff = min(diffsic,0.25/(dtsic*diff_limit))
+         else
+            diffsic_eff = diffsic
+         endif
 
 c western boundary fluxes
          i = 1
@@ -47,7 +58,7 @@ c western doorway
                   endif
                endif
                fw(l) = fw(l) - (varice1(l,1,j) - varice1(l,imax,j))
-     1                    *rc(j)*rc(j)*rdphi*diffsic
+     1                    *rc(j)*rc(j)*rdphi*diffsic_eff
             else
                fw(l) = 0
             endif
@@ -81,7 +92,7 @@ c eastern edge(doorway or wall)
                      endif
                   endif
                   fe(l) = fe(l) - (varice1(l,i+1,j) - varice1(l,i,j))
-     1                    *rc(j)*rc(j)*rdphi*diffsic
+     1                    *rc(j)*rc(j)*rdphi*diffsic_eff
                endif
 c flux to north
                if(kmax.lt.max(k1(i,j),k1(i,j+1)))then
@@ -105,7 +116,7 @@ c flux to north
                      endif
                   endif
                   fn(l) = fn(l) - cv(j)*cv(j)*(varice1(l,i,j+1) -
-     1                       varice1(l,i,j))*rdsv(j)*diffsic
+     1                       varice1(l,i,j))*rdsv(j)*diffsic_eff
                endif
 c
                if(kmax.ge.k1(i,j))then

@@ -1,9 +1,17 @@
       module geniemod
       implicit none
 
+#ifndef GENIENY
+#define GENIENY 32
+#endif
+
+#ifndef GENIENX
+#define GENIENX (2*GENIENY)
+#endif
+
       integer NLAT_ATM,NLEV_ATM,NPRO_ATM
 
-      parameter(NLAT_ATM = 32)
+      parameter(NLAT_ATM = GENIENY)
       parameter(NLEV_ATM = 10)
       parameter(NPRO_ATM = 1)
 

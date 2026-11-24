@@ -140,9 +140,9 @@ c-DJL 31/8/2004
 c-DJL 21/9/05 (for reading IGCM grid), inserted by RMA
 
       integer nx_igcm
-      parameter(nx_igcm=64)
+      parameter(nx_igcm=maxi)
       integer ny_igcm
-      parameter(ny_igcm=32)
+      parameter(ny_igcm=maxj)
 
       real igcm_lons(nx_igcm)
       real igcm_lats(ny_igcm)
