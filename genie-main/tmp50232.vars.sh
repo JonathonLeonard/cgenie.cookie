@@ -1,0 +1,10 @@
+OUTROOT=/Users/jono/cgenie_output
+CODEDIR=/Users/jono/cgenie.cookie
+RUNTIME_ROOT=../../cgenie.cookie
+RUNTIME_OUTDIR=.
+EXPID=2026-11-17_Pandora_EBM_volMin_TPW_400ppm_740ma.xml
+FIXEDATMOSFILE=data_fixedatmos
+GLIMMERFILE=data_glimmer.config
+igcm_module=genie-igcm
+BFGROOT=EMPTY
+MODULE_NAMES='plasim goldstein goldsteinseaice '

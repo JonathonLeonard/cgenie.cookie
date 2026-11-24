@@ -260,7 +260,7 @@ c some terms derived to check energy conservation wrt PLASIM
               print*,"emo",emo
               print*,"sensible_coeff",sensible_coeff(i,j)
               print*,"atemp",atemp(i,j)
-              print*,"Problem with ice temperature convergence, stopping, see above for details" ! Added by JL
+              print*,"Problem with ice temperature convergence"
               stop 1 ! Added by JL
 
    10         tice(i,j)=min(tice(i,j),0.0)

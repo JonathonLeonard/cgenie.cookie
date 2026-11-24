@@ -1,0 +1,2139 @@
+<?xml version="1.0"?>
+<job creator="build_job.xsl" date="Tue 17 Nov 2026 15:01:17 AEDT">
+  <history>
+    <entry action="build job" date="Tue 17 Nov 2026 15:01:17 AEDT"/>
+    <entry action="apply job configuration" date="Tue 17 Nov 2026 15:01:17 AEDT" name="" author="j leonard adapted from phil holden"/>
+  </history>
+  <vars>
+    <var name="OUTROOT">/Users/jono/cgenie_output</var>
+    <var name="CODEDIR">/Users/jono/cgenie.cookie</var>
+    <var name="RUNTIME_ROOT">../../cgenie.cookie</var>
+    <var name="RUNTIME_OUTDIR">.</var>
+    <var name="EXPID">2026-11-17_Pandora_EBM_volMin_TPW_400ppm_740ma.xml</var>
+    <var name="FIXEDATMOSFILE">data_fixedatmos</var>
+    <var name="GLIMMERFILE">data_glimmer.config</var>
+    <var name="igcm_module">genie-igcm</var>
+    <var name="GLIMMER_MASTER_CONFIG"><varref>RUNTIME_ROOT</varref><sep/>genie-icesheet<sep/>data<sep/>glimmer_default_config</var>
+    <var name="BFGROOT">EMPTY</var>
+  </vars>
+  <config>
+    <model name="plasim" type="atmosphere" flagname="flag_plasimatmos"/>
+    <model name="goldstein" type="ocean" flagname="flag_goldsteinocean"/>
+    <model name="goldsteinseaice" type="seaice" flagname="flag_goldsteinseaice"/>
+  </config>
+  <build>
+    <macro handle="GENIENXOPTS" status="defined">
+      <identifier>GENIENX</identifier>
+      <replacement>64</replacement>
+    </macro>
+    <macro handle="GENIENYOPTS" status="defined">
+      <identifier>GENIENY</identifier>
+      <replacement>32</replacement>
+    </macro>
+    <macro handle="GENIENLOPTS" status="undefined">
+      <identifier>GENIENL</identifier>
+      <replacement>7</replacement>
+    </macro>
+    <macro handle="GOLDSTEINNLONSOPTS" status="defined">
+      <identifier>GOLDSTEINNLONS</identifier>
+      <replacement>64</replacement>
+    </macro>
+    <macro handle="GOLDSTEINNLATSOPTS" status="defined">
+      <identifier>GOLDSTEINNLATS</identifier>
+      <replacement>32</replacement>
+    </macro>
+    <macro handle="GOLDSTEINNLEVSOPTS" status="defined">
+      <identifier>GOLDSTEINNLEVS</identifier>
+      <replacement>16</replacement>
+    </macro>
+    <macro handle="GOLDSTEINNTRACSOPTS" status="undefined">
+      <identifier>GOLDSTEINNTRACS</identifier>
+      <replacement>2</replacement>
+    </macro>
+    <macro handle="GOLDSTEINMAXISLESOPTS" status="defined">
+      <identifier>GOLDSTEINMAXISLES</identifier>
+      <replacement>15</replacement>
+    </macro>
+    <macro handle="SEDGEMNLONSOPTS" status="defined">
+      <identifier>SEDGEMNLONS</identifier>
+      <replacement>64</replacement>
+    </macro>
+    <macro handle="SEDGEMNLATSOPTS" status="defined">
+      <identifier>SEDGEMNLATS</identifier>
+      <replacement>32</replacement>
+    </macro>
+    <macro handle="GENIEMXLEVOPTS" status="undefined">
+      <identifier>GENIEMXLEV</identifier>
+      <replacement>22</replacement>
+    </macro>
+    <macro handle="GENIENLEVRFOPTS" status="undefined">
+      <identifier>GENIENLEVRF</identifier>
+      <replacement>2</replacement>
+    </macro>
+    <macro handle="IGCMMMOPTS" status="undefined">
+      <identifier>IGCMMM</identifier>
+      <replacement>42</replacement>
+    </macro>
+    <macro handle="IGCMNNOPTS" status="undefined">
+      <identifier>IGCMNN</identifier>
+      <replacement>42</replacement>
+    </macro>
+    <macro handle="IGCMNWJ2OPTS" status="undefined">
+      <identifier>IGCMNWJ2</identifier>
+      <replacement>462</replacement>
+    </macro>
+    <macro handle="IGCMPQSATTESTOPTS" status="undefined">
+      <identifier>IGCMPQSATTEST</identifier>
+      <replacement/>
+    </macro>
+    <macro handle="SEAICEOPTS" status="undefined">
+      <identifier>EVP</identifier>
+      <replacement/>
+    </macro>
+    <macro handle="SEDGEMNLONSOPTS" status="defined">
+      <identifier>SEDGEMNLONS</identifier>
+      <replacement>64</replacement>
+    </macro>
+    <macro handle="SEDGEMNLATSOPTS" status="defined">
+      <identifier>SEDGEMNLATS</identifier>
+      <replacement>32</replacement>
+    </macro>
+    <macro handle="ROKGEMNLONSOPTS" status="defined">
+      <identifier>ROKGEMNLONS</identifier>
+      <replacement>64</replacement>
+    </macro>
+    <macro handle="ROKGEMNLATSOPTS" status="defined">
+      <identifier>ROKGEMNLATS</identifier>
+      <replacement>32</replacement>
+    </macro>
+  </build>
+  <testing>
+    <var name="TEST_NAME"><varref>EXPID</varref>_regtest</var>
+    <var name="ASSUMEDGOOD_NAME"><varref>EXPID</varref>_assumedgood</var>
+    <var name="KNOWNGOOD_NAME"><varref>EXPID</varref>_knowngood</var>
+    <var name="TESTFILE">xxxx</var>
+    <var name="CHECKFLUXES">FALSE</var>
+  </testing>
+  <parameters>
+    <control>
+      <file name="data_genie">
+        <namelist name="GENIE_CONTROL_NML">
+          <param name="flag_ebatmos">
+            <value datatype="boolean">.false.</value>
+          </param>
+          <param name="flag_plasimatmos">
+            <value datatype="boolean">.true.</value>
+          </param>
+          <param name="flag_goldsteinocean">
+            <value datatype="boolean">.true.</value>
+          </param>
+          <param name="flag_goldlite">
+            <value datatype="boolean">.false.</value>
+          </param>
+          <param name="flag_ocnlite">
+            <value datatype="boolean">.false.</value>
+          </param>
+          <param name="flag_goldsteinseaice">
+            <value datatype="boolean">.true.</value>
+          </param>
+          <param name="flag_ents">
+            <value datatype="boolean">.false.</value>
+          </param>
+          <param name="flag_biogem">
+            <value datatype="boolean">.false.</value>
+          </param>
+          <param name="flag_atchem">
+            <value datatype="boolean">.false.</value>
+          </param>
+          <param name="flag_sedgem">
+            <value datatype="boolean">.false.</value>
+          </param>
+          <param name="flag_rokgem">
+            <value datatype="boolean">.false.</value>
+          </param>
+          <param name="flag_gemlite">
+            <value datatype="boolean">.false.</value>
+          </param>
+          <param name="flag_ecogem">
+            <value datatype="boolean">.false.</value>
+          </param>
+          <param name="expid_name">
+            <value datatype="string"/>
+            <description>experiment name(!)</description>
+          </param>
+          <param name="koverall_total">
+            <value datatype="integer">34560000</value>
+            <description>Total number of timesteps. For IGCM, where dt is usually 1 hour, use koverall_total=8640 for a 1 year run. For embm/goldstein where dt is usually 365.25/500 days, use koverall_total=500 for a 1 year run.</description>
+          </param>
+          <param name="katm_loop">
+            <value datatype="integer">1</value>
+            <description/>
+          </param>
+          <param name="ksic_loop">
+            <value datatype="integer">16</value>
+            <description/>
+          </param>
+          <param name="kocn_loop">
+            <value datatype="integer">16</value>
+            <description/>
+          </param>
+          <param name="klnd_loop">
+            <value datatype="integer">1</value>
+            <description/>
+          </param>
+          <param name="conv_kocn_katchem">
+            <value datatype="integer">10</value>
+            <description/>
+          </param>
+          <param name="conv_kocn_ksedgem">
+            <value datatype="integer">180</value>
+            <description/>
+          </param>
+          <param name="conv_kocn_kbiogem">
+            <value datatype="integer">10</value>
+            <description/>
+          </param>
+          <param name="conv_kocn_krokgem">
+            <value datatype="integer">10</value>
+            <description/>
+          </param>
+          <param name="conv_kocn_kgoldlite">
+            <value datatype="integer">1</value>
+            <description/>
+          </param>
+          <param name="conv_kocn_kocnlite">
+            <value datatype="integer">1</value>
+            <description/>
+          </param>
+          <param name="conv_kocn_kecogem">
+            <value datatype="integer">1</value>
+            <description/>
+          </param>
+          <param name="conv_kocn_korb">
+            <value datatype="integer">999999999</value>
+            <description/>
+          </param>
+          <param name="kgemlite">
+            <value datatype="integer">96</value>
+            <description/>
+          </param>
+          <param name="gem_notyr">
+            <value datatype="integer">9999990</value>
+            <description/>
+          </param>
+          <param name="gem_notyr_min">
+            <value datatype="integer">0</value>
+            <description/>
+          </param>
+          <param name="gem_notyr_max">
+            <value datatype="integer">9999990</value>
+            <description/>
+          </param>
+          <param name="gem_yr">
+            <value datatype="integer">0</value>
+            <description/>
+          </param>
+          <param name="gem_yr_min">
+            <value datatype="integer">10</value>
+            <description/>
+          </param>
+          <param name="gem_yr_max">
+            <value datatype="integer">1000</value>
+            <description/>
+          </param>
+          <param name="gem_dyr">
+            <value datatype="integer">0</value>
+            <description/>
+          </param>
+          <param name="gem_adapt_auto">
+            <value datatype="logical">.false.</value>
+            <description>automatic adaptive GEMlite timestepping?</description>
+          </param>
+          <param name="gem_adapt_auto_unlimitedGEM">
+            <value datatype="logical">.false.</value>
+            <description>unlimited GEM phase?</description>
+          </param>
+          <param name="gem_adapt_dpCO2dt">
+            <value datatype="real">0.1</value>
+            <description>rate-of-change threshold for switching into GEMlite (ppm yr-1)</description>
+          </param>
+          <param name="gem_adapt_DpCO2">
+            <value datatype="real">0.1</value>
+            <description>cumulative pCO2 threshold for wtiching out of GEMlite (ppm)</description>
+          </param>
+          <param name="gem_adapt_diag_biogem_full">
+            <value datatype="logical">.false.</value>
+            <description>Normal data save, otherwise skip time-series and slice data saving and just update time point?</description>
+          </param>
+          <param name="write_flag_atm">
+            <value datatype="boolean">.true.</value>
+            <description>.true. for atmospheric output from genie-main</description>
+          </param>
+          <param name="write_flag_ocn">
+            <value datatype="boolean">.true.</value>
+            <description>.true. for ocean output from genie-main</description>
+          </param>
+          <param name="write_flag_sic">
+            <value datatype="boolean">.false.</value>
+            <description>.true. for seaice output from genie-main</description>
+          </param>
+          <param name="outputdir_name">
+            <value datatype="string"><varref>RUNTIME_OUTDIR</varref><sep/>main</value>
+            <description>Name of output directory</description>
+          </param>
+          <param name="dt_write">
+            <value datatype="integer">720</value>
+            <description>Time period of output. For IGCM where dt is usually hours, use dt_write=720 for monthly output. For embm/goldstein, use dt_write=500 for yearly output.</description>
+          </param>
+          <param name="fname_restart_main">
+            <value datatype="string"><varref>RUNTIME_ROOT</varref><sep/>genie-main<sep/>data<sep/>input<sep/>main_restart_0.nc</value>
+            <description/>
+          </param>
+          <param name="fname_fluxrestart">
+            <value datatype="string"><varref>RUNTIME_ROOT</varref><sep/>genie-main<sep/>data<sep/>input<sep/>main_fluxes_0</value>
+            <description/>
+          </param>
+          <param name="flag_checkfluxes_sic">
+            <value datatype="boolean">.false.</value>
+            <description>.true. for screen output of energy and water bugets</description>
+          </param>
+          <param name="flag_checkfluxes_ocn">
+            <value datatype="boolean">.false.</value>
+            <description>.true. for screen output of energy and water bugets</description>
+          </param>
+          <param name="flag_checkfluxes_surf">
+            <value datatype="boolean">.false.</value>
+            <description/>
+          </param>
+          <param name="flag_checkfluxes_atlantic">
+            <value datatype="boolean">.false.</value>
+            <description/>
+          </param>
+          <param name="genie_timestep">
+            <value datatype="real">2739.375</value>
+            <description/>
+          </param>
+          <param name="lrestart_genie">
+            <value datatype="boolean">.false.</value>
+            <description/>
+          </param>
+          <param name="genie_solar_constant">
+            <value datatype="real">1368.0</value>
+            <description>Solar constant (incoming solar radiation in units of Watts per metre squared)</description>
+          </param>
+          <param name="fname_topo">
+            <value datatype="string">'worbe2'</value>
+            <description>topo name</description>
+          </param>
+          <param name="verbosity">
+            <value datatype="integer">1</value>
+            <description>Control over verbosity of logging and messages to screen</description>
+          </param>
+          <param name="debug_init">
+            <value datatype="integer">0</value>
+            <description/>
+          </param>
+          <param name="debug_loop">
+            <value datatype="integer">1</value>
+            <description/>
+          </param>
+          <param name="debug_end">
+            <value datatype="integer">0</value>
+            <description/>
+          </param>
+        </namelist>
+      </file>
+      <file name="data_GEM">
+        <namelist name="INI_GEM_NML">
+          <param name="par_carbconstset_name">
+            <value datatype="string">Mehrbach</value>
+            <description>carbonate dissociation constants set</description>
+          </param>
+          <param name="par_adj_carbconst_option">
+            <value datatype="string">TyrrellZeebe2004</value>
+            <description>carbonate dissociation constants set</description>
+          </param>
+          <param name="ctrl_carbchem_pH_OLD">
+            <value datatype="boolean">.true.</value>
+            <description>OLD pH solution scheme?</description>
+          </param>
+          <param name="par_carbchem_pH_tolerance">
+            <value datatype="real">0.001</value>
+            <description>pH solution tolerance</description>
+          </param>
+          <param name="par_carbchem_pH_tolerance_buffering">
+            <value datatype="real">0.001</value>
+            <description>pH solution tolerance for calculating buffering -- set the same as normal pH solving by default</description>
+          </param>
+          <param name="par_carbchem_dpH_tolerance">
+            <value datatype="real">10.0</value>
+            <description>relaxation factor in pH solution tolerance for re-try</description>
+          </param>
+          <param name="par_carbchem_pH_iterationmax">
+            <value datatype="integer">10</value>
+            <description>pH solution maximum number of iterations</description>
+          </param>
+          <param name="ctrl_carbchem_noH3SiO4">
+            <value datatype="boolean">.false.</value>
+            <description>Ignore H3SiO4 in the calculation of carbonate ALK?</description>
+          </param>
+          <param name="par_geochem_Tmin">
+            <value datatype="real">2.0</value>
+            <description>minimum T used in empirical geochem calculations [default from Mehrbach for back-compatability]</description>
+          </param>
+          <param name="par_geochem_Tmax">
+            <value datatype="real">35.0</value>
+            <description>maximum T used in empirical geochem calculations [default from Mehrbach for back-compatability]</description>
+          </param>
+          <param name="par_geochem_Smin">
+            <value datatype="real">26.0</value>
+            <description>minimum S used in empirical geochem calculations [default from Mehrbach for back-compatability]</description>
+          </param>
+          <param name="par_geochem_Smax">
+            <value datatype="real">43.0</value>
+            <description>maximum S used in empirical geochem calculations [default from Mehrbach for back-compatability]</description>
+          </param>
+          <param name="par_carbchem_Tmin">
+            <value datatype="real">2.0</value>
+            <description>minimum T used in empirical carbchem calculations [default from Mehrbach: 2.0 lte T lte 35 C]</description>
+          </param>
+          <param name="par_carbchem_Tmax">
+            <value datatype="real">35.0</value>
+            <description>maximum T used in empirical carbchem calculations [default from Mehrbach: 2.0 lte T lte 35 C]</description>
+          </param>
+          <param name="par_carbchem_Smin">
+            <value datatype="real">26.0</value>
+            <description>minimum S used in empirical carbchem calculations [default from Mehrbach: 26.0 lte S lte 43 PSU]</description>
+          </param>
+          <param name="par_carbchem_Smax">
+            <value datatype="real">43.0</value>
+            <description>maximum S used in empirical carbchem calculations [default from Mehrbach: 26.0 lte S lte 43 PSU]</description>
+          </param>
+          <param name="par_grid_lon_offset">
+            <value datatype="real">-2.8125</value>
+            <description>assumed longitudinal offset of the grid</description>
+          </param>
+          <param name="ctrl_debug_init">
+            <value datatype="integer">0</value>
+            <description/>
+          </param>
+          <param name="ctrl_debug_end">
+            <value datatype="integer">0</value>
+            <description/>
+          </param>
+          <param name="ctrl_debug_loop">
+            <value datatype="integer">0</value>
+            <description/>
+          </param>
+          <param name="ctrl_debug_reportwarnings">
+            <value datatype="boolean">.false.</value>
+            <description>Report all run-time warnings?</description>
+          </param>
+          <param name="par_gem_indir_name">
+            <value datatype="string"><varref>RUNTIME_ROOT</varref><sep/>genie-main<sep/>data<sep/>input</value>
+            <description>GEM data input directory</description>
+          </param>
+          <param name="string_results_ext">
+            <value datatype="string">.txt</value>
+            <description>filetype for series output files for GEM modules</description>
+          </param>
+          <paramArray name="atm_select" dimension="1" extent="19">
+            <description>tracer selection</description>
+            <param name="atm_select(1)" index="1">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="atm_select(2)" index="2">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="atm_select(3)" index="3">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="atm_select(4)" index="4">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="atm_select(5)" index="5">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="atm_select(6)" index="6">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="atm_select(7)" index="7">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="atm_select(8)" index="8">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="atm_select(9)" index="9">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="atm_select(10)" index="10">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="atm_select(11)" index="11">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="atm_select(12)" index="12">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="atm_select(13)" index="13">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="atm_select(14)" index="14">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="atm_select(15)" index="15">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="atm_select(16)" index="16">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="atm_select(17)" index="17">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="atm_select(18)" index="18">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="atm_select(19)" index="19">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="atm_select(20)" index="20">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="atm_select(21)" index="21">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+          </paramArray>
+          <paramArray name="ocn_select" dimension="1" extent="107">
+            <description>tracer selection</description>
+            <param name="ocn_select(1)" index="1">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(2)" index="2">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(3)" index="3">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(4)" index="4">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(5)" index="5">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(6)" index="6">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(7)" index="7">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(8)" index="8">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(9)" index="9">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(10)" index="10">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(11)" index="11">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(12)" index="12">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(13)" index="13">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(14)" index="14">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(15)" index="15">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(16)" index="16">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(17)" index="17">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(18)" index="18">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(19)" index="19">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(20)" index="20">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(21)" index="21">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(22)" index="22">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(23)" index="23">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(24)" index="24">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(25)" index="25">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(26)" index="26">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(27)" index="27">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(28)" index="28">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(29)" index="29">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(30)" index="30">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(31)" index="31">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(32)" index="32">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(33)" index="33">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(34)" index="34">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(35)" index="35">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(36)" index="36">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(37)" index="37">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(38)" index="38">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(39)" index="39">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(40)" index="40">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(41)" index="41">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(42)" index="42">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(43)" index="43">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(44)" index="44">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(45)" index="45">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(46)" index="46">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(47)" index="47">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(48)" index="48">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(49)" index="49">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(50)" index="50">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(51)" index="51">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(52)" index="52">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(53)" index="53">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(54)" index="54">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(55)" index="55">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(56)" index="56">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(57)" index="57">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(58)" index="58">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(59)" index="59">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(60)" index="60">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(61)" index="61">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(62)" index="62">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(63)" index="63">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(64)" index="64">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(65)" index="65">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(66)" index="66">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(67)" index="67">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(68)" index="68">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(69)" index="69">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(70)" index="70">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(71)" index="71">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(72)" index="72">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(73)" index="73">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(74)" index="74">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(75)" index="75">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(76)" index="76">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(77)" index="77">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(78)" index="78">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(79)" index="79">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(80)" index="80">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(81)" index="81">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(82)" index="82">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(83)" index="83">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(84)" index="84">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(85)" index="85">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(86)" index="86">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(87)" index="87">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(88)" index="88">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(89)" index="89">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(90)" index="90">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(91)" index="91">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(92)" index="92">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(93)" index="93">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(94)" index="94">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(95)" index="95">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(96)" index="96">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(97)" index="97">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(98)" index="98">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(99)" index="99">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(100)" index="100">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(101)" index="101">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(102)" index="102">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(103)" index="103">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(104)" index="104">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(105)" index="105">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(106)" index="106">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(107)" index="107">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(108)" index="108">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="ocn_select(109)" index="109">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+          </paramArray>
+          <paramArray name="sed_select" dimension="1" extent="109">
+            <description>tracer selection</description>
+            <param name="sed_select(1)" index="1">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(2)" index="2">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(3)" index="3">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="sed_select(4)" index="4">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="sed_select(5)" index="5">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="sed_select(6)" index="6">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(7)" index="7">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(8)" index="8">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="sed_select(9)" index="9">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(10)" index="10">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(11)" index="11">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(12)" index="12">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(13)" index="13">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(14)" index="14">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="sed_select(15)" index="15">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="sed_select(16)" index="16">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="sed_select(17)" index="17">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(18)" index="18">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(19)" index="19">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(20)" index="20">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(21)" index="21">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(22)" index="22">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="sed_select(23)" index="23">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(24)" index="24">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(25)" index="25">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(26)" index="26">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(27)" index="27">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(28)" index="28">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(29)" index="29">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(30)" index="30">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(31)" index="31">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(32)" index="32">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="sed_select(33)" index="33">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="sed_select(34)" index="34">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="sed_select(35)" index="35">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(36)" index="36">
+              <value datatype="boolean">.true.</value>
+              <description/>
+            </param>
+            <param name="sed_select(37)" index="37">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(38)" index="38">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(39)" index="39">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(40)" index="40">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(41)" index="41">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(42)" index="42">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(43)" index="43">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(44)" index="44">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(45)" index="45">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(46)" index="46">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(47)" index="47">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(48)" index="48">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(49)" index="49">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(50)" index="50">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(51)" index="51">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(52)" index="52">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(53)" index="53">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(54)" index="54">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(55)" index="55">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(56)" index="56">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(57)" index="57">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(59)" index="58">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(59)" index="59">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(60)" index="60">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(61)" index="61">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(62)" index="62">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(63)" index="63">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(64)" index="64">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(65)" index="65">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(66)" index="66">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(67)" index="67">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(69)" index="68">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(69)" index="69">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(70)" index="70">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(71)" index="71">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(72)" index="72">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(73)" index="73">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(74)" index="74">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(75)" index="75">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(76)" index="76">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(77)" index="77">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(78)" index="78">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(79)" index="79">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(80)" index="80">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(81)" index="81">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(82)" index="82">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(83)" index="83">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(84)" index="84">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(85)" index="85">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(86)" index="86">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(87)" index="87">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(88)" index="88">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(89)" index="89">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(90)" index="90">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(91)" index="91">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(92)" index="92">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(93)" index="93">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(94)" index="94">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(95)" index="95">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(96)" index="96">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(97)" index="97">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(98)" index="98">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(99)" index="99">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(100)" index="100">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(101)" index="101">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(102)" index="102">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(103)" index="103">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(104)" index="104">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(105)" index="105">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(106)" index="106">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(107)" index="107">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(108)" index="108">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(109)" index="109">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(110)" index="110">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+            <param name="sed_select(111)" index="111">
+              <value datatype="boolean">.false.</value>
+              <description/>
+            </param>
+          </paramArray>
+        </namelist>
+      </file>
+    </control>
+    <model name="plasim" type="" flagname="">
+      <file name="data_PLASIM">
+        <namelist name="INI_PLASIM_NML">
+          <param name="n_days_per_year">
+            <value datatype="integer">360</value>
+            <description>PLASIM days per year</description>
+          </param>
+          <param name="n_days_per_month">
+            <value datatype="integer">30</value>
+            <description>PLASIM days per month</description>
+          </param>
+          <param name="nafter">
+            <value datatype="integer">1152000</value>
+            <description>file output frequency in PLASIM timesteps</description>
+          </param>
+          <param name="ndiag">
+            <value datatype="integer">960</value>
+            <description>screen output frequency in PLASIM timesteps</description>
+          </param>
+          <param name="ngenie">
+            <value datatype="integer">1</value>
+            <description>1=pass genie variables to plasim 0=plasim does not see genie untested - use 0 with caution</description>
+          </param>
+          <param name="kick">
+            <value datatype="integer">0</value>
+            <description>add noise during initialisation? 0=no 1=white noise 2=white noise symmetrical about equator</description>
+          </param>
+          <param name="nhdiff">
+            <value datatype="integer">15</value>
+            <description>critical wavenumber for horizontal diffusion</description>
+          </param>
+          <param name="tdissd">
+            <value datatype="real">0.012448584</value>
+            <description>diffusion timescale for divergence (days)</description>
+          </param>
+          <param name="tdissz">
+            <value datatype="real">0.046267461</value>
+            <description>diffusion timescale for vorticity (days)</description>
+          </param>
+          <param name="tdisst">
+            <value datatype="real">1.03201731</value>
+            <description>diffusion timescale for temperature (days)</description>
+          </param>
+          <param name="tdissq">
+            <value datatype="real">0.061880547</value>
+            <description>diffusion timescale for specific humidity (days)</description>
+          </param>
+          <param name="mars">
+            <value datatype="integer">0</value>
+            <description>shortcut for mars simulation untested and probably not working in plasim-genie left in for possible development</description>
+          </param>
+          <param name="runtime_root">
+            <value datatype="string">
+              <varref>RUNTIME_ROOT</varref>
+            </value>
+            <description/>
+          </param>
+        </namelist>
+        <namelist name="PLANET_PLASIM_NML">
+          <param name="nfixorb">
+            <value datatype="integer">0</value>
+            <description>=1 to allow user-defined orbit</description>
+          </param>
+          <param name="eccen">
+            <value datatype="real">0.016715</value>
+            <description>eccentricity of orbit (needs nfixorb=1)</description>
+          </param>
+          <param name="obliq">
+            <value datatype="real">23.441</value>
+            <description>obliquity of orbit (needs nfixorb=1)</description>
+          </param>
+          <param name="mvelp">
+            <value datatype="real">102.7</value>
+            <description>longitude of moving vernal equyinox (needs nfixorb=1)</description>
+          </param>
+        </namelist>
+        <namelist name="GENIE_COUPLING_NML">
+          <param name="indir_name">
+            <value datatype="string"><varref>RUNTIME_ROOT</varref>/genie-plasim/data/input/740Ma_PDRA</value>
+            <description>location of boundary condition files</description>
+          </param>
+          <param name="outdir_name">
+            <value datatype="string"><varref>RUNTIME_OUTDIR</varref><sep/>results</value>
+            <description>output directory</description>
+          </param>
+          <param name="rstdir_name">
+            <value datatype="string">dummydir</value>
+            <description>if there is a plasim_status file in this directory then plasim will restart from it</description>
+          </param>
+          <param name="scale_apm">
+            <value datatype="real">0</value>
+            <description>scale 0.32Sv Atl-Pac moisure flux correction</description>
+          </param>
+          <param name="ngear">
+            <value datatype="integer">1</value>
+            <description>switch for AO gearing</description>
+          </param>
+          <param name="ngear_years_plasim">
+            <value datatype="integer">1</value>
+            <description>number of years of coupled simulation when AO gearing activated</description>
+          </param>
+          <param name="ngear_multiple">
+            <value datatype="integer">10</value>
+            <description>AO gearing ratio</description>
+          </param>
+          <param name="atchem_couple">
+            <value datatype="logical">.false.</value>
+            <description>are carbon fluxes passed out of plasim (ents)?</description>
+          </param>
+        </namelist>
+        <namelist name="PLASIM_OUTPUT_SWITCHES">
+          <param name="nout3D">
+            <value datatype="integer">1</value>
+            <description>3D plasim outputs? 1=yes</description>
+          </param>
+          <param name="noutseas">
+            <value datatype="integer">1</value>
+            <description>seasonal outputs? 1=yes</description>
+          </param>
+          <param name="noutmnth">
+            <value datatype="integer">1</value>
+            <description>monthly outputs? 1=yes</description>
+          </param>
+        </namelist>
+        <namelist name="SURFPAR_NML">
+          <param name="oroscale">
+            <value datatype="real">1.0</value>
+            <description>orography scaling</description>
+          </param>
+        </namelist>
+        <namelist name="FLUXPAR_PLASIM_NML">
+          <param name="vdiff_lamm">
+            <value datatype="real">12.95755067</value>
+            <description>vertical diffusivity (m)</description>
+          </param>
+        </namelist>
+        <namelist name="RADPAR_PLASIM_NML">
+          <param name="ndcycle">
+            <value datatype="integer">0</value>
+            <description>daily insolation cycle? 0=off</description>
+          </param>
+          <param name="co2">
+            <value datatype="real">400</value>
+            <description>co2 concentration (if negative will read an annual time series)</description>
+          </param>
+          <param name="co2filename">
+            <value datatype="string">co2.dat</value>
+            <description>co2 concentration time series (read if co2 negative)</description>
+          </param>
+          <param name="ntco2e">
+            <value datatype="integer">0</value>
+            <description>switch for time series emissions input</description>
+          </param>
+          <param name="co2emitfilename">
+            <value datatype="string">co2emit.dat</value>
+            <description>co2 emissions (GTC/yr) time series (read if ntco2e=1)</description>
+          </param>
+          <param name="nradfor">
+            <value datatype="integer">0</value>
+            <description>switch for time series non CO2 forcing</description>
+          </param>
+          <param name="radforfilename">
+            <value datatype="string">co2emit.dat</value>
+            <description>non-CO2 radfor (W/m2) annual time series (read if nradfor=1)</description>
+          </param>
+          <param name="atchem_radfor">
+            <value datatype="boolean">.false.</value>
+            <description>use atchem CO2 in plasim?</description>
+          </param>
+          <param name="tswr1">
+            <value datatype="real">0.324030081</value>
+            <description>cloud albedo parameter</description>
+          </param>
+          <param name="tswr2">
+            <value datatype="real">0.032974609</value>
+            <description>cloud backscattering parameter</description>
+          </param>
+          <param name="acllwr">
+            <value datatype="real">0.501520425</value>
+            <description>cloud long wave mass absorption coefficient</description>
+          </param>
+          <param name="th2oc">
+            <value datatype="real">0.023572382</value>
+            <description>absorption coefficien h2o continuum</description>
+          </param>
+          <param name="gsol0">
+            <value datatype="real">1284.1273018414731</value>
+            <description>solar constant W/m2</description>
+          </param>
+        </namelist>
+        <namelist name="RAINPAR_PLASIM_NML">
+          <param name="rcritmin">
+            <value datatype="real">0.948665442</value>
+            <description>minimum crit rel hum for non conv clouds</description>
+          </param>
+          <param name="gamma">
+            <value datatype="real">0.007991045</value>
+            <description>parameter for evaporation of precipitation</description>
+          </param>
+        </namelist>
+        <namelist name="SEAPAR_PLASIM_NML">
+          <param name="albsea">
+            <value datatype="real">0.069</value>
+            <description>ocean albedo at equator</description>
+          </param>
+          <param name="albseamax">
+            <value datatype="real">0.449923169</value>
+            <description>eq-pole ocean albedo difference</description>
+          </param>
+        </namelist>
+        <namelist name="LANDPAR_PLASIM_NML">
+          <param name="albgmax">
+            <value datatype="real">0.8</value>
+            <description>maximum ice sheet albedo</description>
+          </param>
+          <param name="nbiome">
+            <value datatype="integer">1</value>
+            <description>1=yes, 2=dynamic vegetation but chnages not seen by climate (see initialised vegetation from e.g. restart)</description>
+          </param>
+          <param name="nmoist">
+            <value datatype="integer">1</value>
+            <description>photosynthesis moisture limited? 1=yes</description>
+          </param>
+        </namelist>
+        <namelist name="ENTSPLASIM">
+          <param name="qthresh">
+            <value datatype="real">0.1</value>
+            <description>moisture threshold for photosynthesis</description>
+          </param>
+          <param name="k14">
+            <value datatype="real">145.0</value>
+            <description>CO2 fertilization Michalis Menton half saturation</description>
+          </param>
+          <param name="k16">
+            <value datatype="real">11.5</value>
+            <description>self-shading limit on cveg</description>
+          </param>
+          <param name="k17">
+            <value datatype="real">0.842488946</value>
+            <description>fractional vegetation dependence on cveg (VFC)</description>
+          </param>
+          <param name="k18">
+            <value datatype="real">1.204E-07</value>
+            <description>base photosynthesis rate (VBP) units kgC m-2 s-1 (not yr-1 as standard ents)</description>
+          </param>
+          <param name="k26">
+            <value datatype="real">2.41966E-09</value>
+            <description>leaf-litter rate (LLR) units kgC m-2 s-1 (not yr-1 as standard ents)</description>
+          </param>
+          <param name="k32">
+            <value datatype="real">218.3556628</value>
+            <description>activation temperature (SRT) (K)</description>
+          </param>
+        </namelist>
+      </file>
+    </model>
+    <model name="goldstein" type="" flagname="">
+      <file name="data_GOLD">
+        <namelist name="INI_GOLD_NML">
+          <param name="indir_name">
+            <value datatype="string"><varref>RUNTIME_ROOT</varref><sep/>genie-goldstein<sep/>data<sep/>input</value>
+            <description/>
+          </param>
+          <param name="outdir_name">
+            <value datatype="string"><varref>RUNTIME_OUTDIR</varref><sep/>results</value>
+            <description>results output directory</description>
+          </param>
+          <param name="rstdir_name">
+            <value datatype="string"><varref>RUNTIME_ROOT</varref><sep/>genie-goldstein<sep/>data<sep/>input</value>
+            <description>restart (input) directory</description>
+          </param>
+          <param name="inrstdir_name">
+            <value datatype="string"><varref>RUNTIME_OUTDIR</varref><sep/>restarts</value>
+            <description>restart (input) directory</description>
+          </param>
+          <param name="outrstdir_name">
+            <value datatype="string"><varref>RUNTIME_OUTDIR</varref><sep/>restarts</value>
+            <description>restart (output) directory</description>
+          </param>
+          <param name="igrid">
+            <value datatype="integer">2</value>
+            <description>igrid (0 = const dsinlat; 1 = const dlat; 2 = igcm)</description>
+          </param>
+          <param name="world">
+            <value datatype="string">0740PDRA</value>
+            <description>topography filename</description>
+          </param>
+          <param name="npstp">
+            <value datatype="integer">72000</value>
+            <description>frequency at which 'health checks' are written to the screen or named output file</description>
+          </param>
+          <param name="iwstp">
+            <value datatype="integer">72000</value>
+            <description>Restart period in timesteps. 500 gives output every 5 years, given nyear=100</description>
+          </param>
+          <param name="itstp">
+            <value datatype="integer">72000</value>
+            <description>frequency at which integral diagnostics are written (as time series)</description>
+          </param>
+          <param name="ianav">
+            <value datatype="integer">72000</value>
+            <description>length of time over which output is averaged (recommended minimum = 1 year for annual average)</description>
+          </param>
+          <param name="conserv_per">
+            <value datatype="integer">50000</value>
+            <description/>
+          </param>
+          <param name="ans">
+            <value datatype="string">n</value>
+            <description>new/continuing goldstein</description>
+          </param>
+          <param name="sodaylen">
+            <value datatype="real">86400.0</value>
+            <description>length of solar day in goldstein</description>
+          </param>
+          <param name="sidaylen">
+            <value datatype="real">86400.0</value>
+            <description>length of sidereal day in goldstein -- 86400.0 is for backwards compatablity; 86164.0 is the 'real' value</description>
+          </param>
+          <param name="yearlen">
+            <value datatype="real">360</value>
+            <description>number of days per year goldstein</description>
+          </param>
+          <param name="nyear">
+            <value datatype="integer">720</value>
+            <description>timesteps per year goldstein</description>
+          </param>
+          <param name="temp0">
+            <value datatype="real">0.0</value>
+            <units>C<sup>o</sup></units>
+            <description>initial Southern hemisphere ocean temp (applied to all ocean grid boxes south of the equator in non-restart runs)</description>
+          </param>
+          <param name="temp1">
+            <value datatype="real">0.0</value>
+            <units>C<sup>o</sup></units>
+            <description>initial Norther hemisphere ocean temp (applied to all ocean grid boxes north of the equator in non-restart runs)</description>
+          </param>
+          <param name="rel">
+            <value datatype="real">0.90</value>
+            <description>relaxation parameter</description>
+          </param>
+          <param name="scf">
+            <value datatype="real">2.44653955</value>
+            <units>dimensionless</units>
+            <description>scl_tau: scales the wind stress to drive correct gyre strengths. Plausible range 1 to 3 (dimensionless). Tuned values: 1.6674 (EnKF), 1.1841 (ACCPM), 1.3005 (NSGA-II)</description>
+          </param>
+          <param name="adrag">
+            <value datatype="real">2.554625913</value>
+            <description>inverse minimum drag in days</description>
+            <units>d</units>
+          </param>
+          <param name="hosing">
+            <value datatype="real">0.00</value>
+            <description>inital/constant value of hosing flux (Sv)</description>
+          </param>
+          <param name="hosing_trend">
+            <value datatype="real">0.00</value>
+            <description>rate at which hosing flux is increased/decreased (Sv/kyr)</description>
+          </param>
+          <param name="nyears_hosing">
+            <value datatype="integer">0</value>
+            <description>time period of hosing (yr)</description>
+          </param>
+          <param name="fwanomin">
+            <value datatype="string">n</value>
+            <description>Apply F/W flux anomalies (y/n)</description>
+          </param>
+          <param name="cmip_model">
+            <value datatype="string">had</value>
+            <description>FW flux anom file (.mod = 3-char GCM identifier)</description>
+          </param>
+          <param name="albocn">
+            <value datatype="real">0.05</value>
+            <description>ocean albedo</description>
+          </param>
+          <param name="gust">
+            <value datatype="real">0.0</value>
+            <description>"gustiness" parameter</description>
+          </param>
+          <param name="ene_tune">
+            <value datatype="real">1.0</value>
+            <description>flux factor</description>
+          </param>
+          <param name="iconv">
+            <value datatype="integer">0</value>
+            <description>ocean convection scheme (0 = original; 1 = Mueller)</description>
+          </param>
+          <param name="imld">
+            <value datatype="integer">0</value>
+            <description>ocean mixed layer scheme (0 = off; 1 = on)</description>
+          </param>
+          <param name="mldpebuoycoeff">
+            <value datatype="real">0.15</value>
+            <description>mixed layer - efficiency of buoyancy-forced mixing (0.15 used in SEA model)</description>
+          </param>
+          <param name="mldketaucoeff">
+            <value datatype="real">2.5</value>
+            <description>coefficient for wind-forced mixing (value of 2.5 from S Roudesli tuning in isolation)</description>
+          </param>
+          <param name="mldwindkedec">
+            <value datatype="real">25.0</value>
+            <description>e-folding depth-scale for decay of efficiency of wind-mixing (100.0 used in SEA model; 25.0 from S Roudesli tuning in isolation)</description>
+          </param>
+          <param name="ctrl_diagmld">
+            <value datatype="boolean">.false.</value>
+            <description>diagnose (only) MLD?</description>
+          </param>
+          <param name="iediff">
+            <value datatype="integer">1</value>
+            <description>ocean diapycnal mixing scheme (0 = uniform; 1, 2 = variable)</description>
+          </param>
+          <param name="ediff0">
+            <value datatype="real">0e-5</value>
+            <description>background diapycnal mixing</description>
+          </param>
+          <param name="ediffpow1">
+            <value datatype="real">1.077402066</value>
+            <description>power law governing rate at which diffusivity increases with depth</description>
+          </param>
+          <param name="ediffpow2">
+            <value datatype="real">1.0</value>
+            <description>stratification dependent mixing (0 = none; 1 = constant energy; other values allowed)</description>
+          </param>
+          <param name="ediffvar">
+            <value datatype="real">0.0</value>
+            <description>scaling of mixing towards input file (0 = none; 1 = as input file; other values allowed)</description>
+          </param>
+          <param name="ieos">
+            <value datatype="integer">1</value>
+            <description>choice of equation of state</description>
+          </param>
+          <param name="tdatafile">
+            <value datatype="string">pl16_tempann.silo</value>
+            <description>temperature data for error calc</description>
+          </param>
+          <param name="sdatafile">
+            <value datatype="string">pl16_saliann.silo</value>
+            <description>salinity data for error calc</description>
+          </param>
+          <param name="tsinterp">
+            <value datatype="boolean">.false.</value>
+            <description>interpolate temperature and salinity datasets</description>
+          </param>
+          <param name="tdata_varname">
+            <value datatype="string">temperature</value>
+            <description>variable name of temperature data for error calc</description>
+          </param>
+          <param name="tdata_missing">
+            <value datatype="real">1.0e20</value>
+            <description>massing value used in temperature data for error calc</description>
+          </param>
+          <param name="tdata_scaling">
+            <value datatype="real">1.0</value>
+            <description>conversion used in temperature data for error calc (will be used to calculate "data/scaling-offset"): scaling</description>
+          </param>
+          <param name="tdata_offset">
+            <value datatype="real">0.0</value>
+            <description>conversion used in temperature data for error calc (will be used to calculate "data/scaling-offset"): offset</description>
+          </param>
+          <param name="sdata_varname">
+            <value datatype="string">salinity</value>
+            <description>variable name of salinity data for error calc</description>
+          </param>
+          <param name="sdata_missing">
+            <value datatype="real">1.0e20</value>
+            <description>massing value used in salinity data for error calc</description>
+          </param>
+          <param name="sdata_scaling">
+            <value datatype="real">1.0</value>
+            <description>conversion used in salinity data for error calc (will be used to calculate "data/scaling-offset"): scaling</description>
+          </param>
+          <param name="sdata_offset">
+            <value datatype="real">0.0</value>
+            <description>conversion used in salinity data for error calc (will be used to calculate "data/scaling-offset"): offset</description>
+          </param>
+          <param name="lout">
+            <value datatype="string">spn</value>
+            <description>output file number</description>
+          </param>
+          <param name="netin">
+            <value datatype="string">n</value>
+            <description>netCDF restart input (y/n)</description>
+          </param>
+          <param name="netout">
+            <value datatype="string">n</value>
+            <description>netCDF restart output (y/n)</description>
+          </param>
+          <param name="ascout">
+            <value datatype="string">y</value>
+            <description>ASCII restart output (y/n)</description>
+          </param>
+          <param name="ascrst_name">
+            <value datatype="string">restart.go</value>
+            <description>ASCII restart name</description>
+          </param>
+          <param name="filenetin">
+            <value datatype="string"><sep/>home<sep/>joebloggs<sep/>goldstein_restart_1999_12_30.nc</value>
+            <description/>
+          </param>
+          <param name="dirnetout">
+            <value datatype="string"><varref>RUNTIME_OUTDIR</varref><sep/>goldstein</value>
+            <description/>
+          </param>
+          <param name="lin">
+            <value datatype="string">tmp.1</value>
+            <description>ascii restart file name (if applicable) goldstein</description>
+          </param>
+          <param name="dosc">
+            <value datatype="boolean">.true.</value>
+            <description>seasonality?</description>
+          </param>
+          <param name="diso">
+            <value datatype="boolean">.true.</value>
+            <description>Toggle between isopycnal/diapycnal (.true.) and horizontal/vertical (.false.) mixing schemes</description>
+          </param>
+          <param name="ctrl_diso_TSonly">
+            <value datatype="boolean">.false.</value>
+            <description>Restrict isopycnal/diapycnal mixing scheme to T and S only</description>
+          </param>
+          <param name="ssmaxsurf">
+            <value datatype="real">10.</value>
+            <description>Isopycnal slope limiting vertical flux due to isopycnal mixing. This is NOT a tunable parameter; reducing it is a quick fix for unwanted negative tracers</description>
+          </param>
+          <param name="ssmaxdeep">
+            <value datatype="real">10.</value>
+            <description>Isopycnal slope limiting vertical flux due to isopycnal mixing.This is NOT a tunable parameter; reducing it is a quick fix for unwanted negative tracers. It is better to reduce ssmaxsurf than ssmaxdeep.</description>
+          </param>
+          <param name="ctrl_diagend">
+            <value datatype="boolean">.true.</value>
+            <description>CALL diagend?</description>
+          </param>
+          <param name="saln0">
+            <value datatype="real">34.9</value>
+            <description>reference salinity</description>
+          </param>
+          <param name="rst_reset_T">
+            <value datatype="boolean">.false.</value>
+            <description>Reset ocean temperatures (and ignore restart values)?</description>
+          </param>
+          <param name="debug_init">
+            <value datatype="boolean">.true.</value>
+            <description/>
+          </param>
+          <param name="debug_end">
+            <value datatype="boolean">.false.</value>
+            <description/>
+          </param>
+          <param name="debug_loop">
+            <value datatype="boolean">.true.</value>
+            <description/>
+          </param>
+          <param name="par_dsc">
+            <value datatype="real">5000.0</value>
+            <description>ocean depth scale (m)</description>
+          </param>
+          <param name="par_dk">
+            <value datatype="integer">0</value>
+            <description>Additional ocean layers (deeper than go_par_dsc)</description>
+          </param>
+          <paramArray name="diff" dimension="1" extent="2">
+            <description>ocean diffusivites iso/dia (or horiz/vert)</description>
+            <param name="diff(1)" index="1">
+              <value datatype="real">2005.240135</value>
+              <description>Ocean horizontal (isopycnal) diffusivity</description>
+              <units>m<sup>2</sup><sup>-1</sup></units>
+            </param>
+            <param name="diff(2)" index="2">
+              <value datatype="real">0.000135386</value>
+              <description>Ocean vertical (diapycnal) diffusivity</description>
+              <units>m<sup>2</sup><sup>-1</sup></units>
+            </param>
+          </paramArray>
+        </namelist>
+      </file>
+    </model>
+    <model name="goldsteinseaice" type="" flagname="">
+      <file name="data_goldSIC">
+        <namelist name="INI_SIC_NML">
+          <param name="indir_name">
+            <value datatype="string"><varref>RUNTIME_ROOT</varref><sep/>genie-goldsteinseaice<sep/>data<sep/>input</value>
+            <description/>
+          </param>
+          <param name="outdir_name">
+            <value datatype="string"><varref>RUNTIME_OUTDIR</varref><sep/>results</value>
+            <description/>
+          </param>
+          <param name="rstdir_name">
+            <value datatype="string"><varref>RUNTIME_ROOT</varref><sep/>genie-goldsteinseaice<sep/>data<sep/>input</value>
+            <description>restart (input) directory</description>
+          </param>
+          <param name="inrstdir_name">
+            <value datatype="string"><varref>RUNTIME_OUTDIR</varref><sep/>restarts</value>
+            <description>restart (input) directory</description>
+          </param>
+          <param name="outrstdir_name">
+            <value datatype="string"><varref>RUNTIME_OUTDIR</varref><sep/>restarts</value>
+            <description>restart (output) directory</description>
+          </param>
+          <param name="igrid">
+            <value datatype="integer">2</value>
+            <description>igrid (0 = const dsinlat; 1 = const dlat; 2 = igcm)</description>
+          </param>
+          <param name="world">
+            <value datatype="string">0740PDRA</value>
+            <description>topography filename</description>
+          </param>
+          <param name="npstp">
+            <value datatype="integer">72000</value>
+            <description>frequency at which 'health checks' are written to the screen or named output file max, min and average of height, concentration, temperature and albedo of existing sea ice</description>
+          </param>
+          <param name="iwstp">
+            <value datatype="integer">72000</value>
+            <description>frequency at which restart files are written, in ocean timesteps</description>
+          </param>
+          <param name="itstp">
+            <value datatype="integer">72000</value>
+            <description>frequency at which integral diagnostics are written to time series files, in timesteps. 500 gives output every 5 years, given nyear=100</description>
+          </param>
+          <param name="ianav">
+            <value datatype="integer">72000</value>
+            <description>length of time over which output is averaged (recommended minimum = 1 year for annual average)</description>
+          </param>
+          <param name="conserv_per">
+            <value datatype="integer">50000</value>
+            <description>frequency at which total sea ice thermal energy and water content is calculated</description>
+          </param>
+          <param name="ans">
+            <value datatype="string">n</value>
+            <description>new/continuing seaice</description>
+          </param>
+          <param name="sodaylen">
+            <value datatype="real">86400.0</value>
+            <description>length of solar day in goldsteinseaice</description>
+          </param>
+          <param name="sidaylen">
+            <value datatype="real">86400.0</value>
+            <description>length of sidereal day in goldsteinseaice -- 86400.0 is for backwards compatablity; 86164.0 is the 'real' value</description>
+          </param>
+          <param name="yearlen">
+            <value datatype="real">365.25</value>
+            <description>number of days per year seaice</description>
+          </param>
+          <param name="nyear">
+            <value datatype="integer">720</value>
+            <description>timesteps per year</description>
+          </param>
+          <param name="diffsic">
+            <value datatype="real">15000.</value>
+            <description>sea ice horizontal diffusivity</description>
+            <units>m<sup>2</sup><sup>-1</sup></units>
+          </param>
+          <param name="maxalbice">
+            <value datatype="real">0.7</value>
+            <description>maximum sea ice albedo used only in plasim coupling</description>
+          </param>
+          <param name="scale_oheat">
+            <value datatype="real">1.0</value>
+            <description>scale heat flux fom ocean to ice (uncertain MLD) used only in plasim coupling</description>
+          </param>
+          <param name="lout">
+            <value datatype="string">spn</value>
+            <description>output file number</description>
+          </param>
+          <param name="netin">
+            <value datatype="string">n</value>
+            <description>netCDF restart input (y/n)</description>
+          </param>
+          <param name="netout">
+            <value datatype="string">n</value>
+            <description>netCDF restart output (y/n)</description>
+          </param>
+          <param name="ascout">
+            <value datatype="string">y</value>
+            <description>ASCII restart output (y/n)</description>
+          </param>
+          <param name="ascrst_name">
+            <value datatype="string">restart.gs</value>
+            <description>ASCII restart name</description>
+          </param>
+          <param name="filenetin">
+            <value datatype="string"><sep/>home<sep/>joebloggs<sep/>goldsic_restart_1999_12_30.nc</value>
+            <description/>
+          </param>
+          <param name="dirnetout">
+            <value datatype="string"><varref>RUNTIME_OUTDIR</varref><sep/>goldsteinseaice</value>
+            <description/>
+          </param>
+          <param name="lin">
+            <value datatype="string">tmp.1</value>
+            <description>restart file name (if applicable) seaice</description>
+          </param>
+          <param name="dosc">
+            <value datatype="boolean">.true.</value>
+            <description>seasonality?</description>
+          </param>
+          <param name="impsic">
+            <value datatype="boolean">.false.</value>
+            <description>implicit (.true.) or explicit (.false., default) transport scheme</description>
+          </param>
+          <param name="debug_init">
+            <value datatype="boolean">.true.</value>
+            <description/>
+          </param>
+          <param name="debug_end">
+            <value datatype="boolean">.false.</value>
+            <description/>
+          </param>
+          <param name="debug_loop">
+            <value datatype="boolean">.true.</value>
+            <description/>
+          </param>
+          <param name="par_sica_thresh">
+            <value datatype="real">1.0</value>
+            <description>Threshold of fractional sea-ice cover for preventing further sea-ice addition by (ocean) advection</description>
+          </param>
+          <param name="par_sich_thresh">
+            <value datatype="real">30.0</value>
+            <description>Threshold of sea-ice thickness for preventing further sea-ice addition by (ocean) advection</description>
+          </param>
+        </namelist>
+      </file>
+    </model>
+  </parameters>
+</job>
