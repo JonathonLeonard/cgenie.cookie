@@ -1,5 +1,0 @@
-TEST_NAME=2026-11-17_Pandora_EBM_volMin_TPW_400ppm_740ma.xml_regtest
-ASSUMEDGOOD_NAME=2026-11-17_Pandora_EBM_volMin_TPW_400ppm_740ma.xml_assumedgood
-KNOWNGOOD_NAME=2026-11-17_Pandora_EBM_volMin_TPW_400ppm_740ma.xml_knowngood
-TESTFILE=xxxx
-CHECKFLUXES=FALSE
